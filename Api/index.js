@@ -16,7 +16,7 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-// const __dirname = path.resolve();
+const __dirname = path.resolve();
 const app = express();
 
 // app.use(express.static(path.join(__dirname, "../../Client/dist")));
@@ -36,7 +36,7 @@ app.listen(5000, () => {
 });
 
 app.use("/", (req, res) => {
-  res.sendFile(__dirname + "/Api/views/index.html");
+  res.sendFile(__dirname, "/Api/views/index.html");
   // res.send('Application')
 });
 
