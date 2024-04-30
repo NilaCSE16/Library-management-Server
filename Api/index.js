@@ -36,8 +36,8 @@ app.listen(5000, () => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname, "/Api/views/index.html");
-  // res.send('Application')
+  // res.sendFile(__dirname + "/Api/views/index.html");
+  res.send("Application");
 });
 
 app.use("/api/user", userRoutes);
