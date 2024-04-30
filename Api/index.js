@@ -26,6 +26,7 @@ const app = express();
 // });
 
 app.use(express.static("public"));
+app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 app.use(cookieParser());
@@ -35,7 +36,8 @@ app.listen(5000, () => {
 });
 
 app.use("/", (req, res) => {
-  res.sendFile(__dirname + "/Api/views/index.html");
+  // res.sendFile(__dirname + "/Api/views/index.html");
+  res.send("Application running");
 });
 
 app.use("/api/user", userRoutes);
