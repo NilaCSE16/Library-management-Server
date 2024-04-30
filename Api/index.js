@@ -2,11 +2,11 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
-import userRoutes from "./Api/routes/user.route.js";
-import authRoutes from "./Api/routes/auth.route.js";
+import userRoutes from "./routes/user.route.js";
+import authRoutes from "./routes/auth.route.js";
 // import cors from "cors";
 import cookieParser from "cookie-parser";
-import bookRoutes from "./Api/routes/book.route.js";
+import bookRoutes from "./routes/book.route.js";
 // import path from "path";
 
 mongoose
