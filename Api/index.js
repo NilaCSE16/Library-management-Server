@@ -35,7 +35,7 @@ app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });
 
-app.use("/", (req, res) => {
+app.get("/", (req, res) => {
   res.sendFile(__dirname, "/Api/views/index.html");
   // res.send('Application')
 });
