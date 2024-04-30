@@ -7,7 +7,7 @@ import authRoutes from "./routes/auth.route.js";
 // import cors from "cors";
 import cookieParser from "cookie-parser";
 import bookRoutes from "./routes/book.route.js";
-// import path from "path";
+import path from "path";
 
 mongoose
   .connect(process.env.MONGO)
@@ -16,7 +16,7 @@ mongoose
   })
   .catch((err) => console.log(err));
 
-// const __dirname = path.resolve();
+const __dirname = path.resolve();
 const app = express();
 
 // app.use(express.static(path.join(__dirname, "../../Client/dist")));
@@ -25,6 +25,8 @@ const app = express();
 //   res.sendFile(path.join(__dirname, "../../Client/dist/index.html"));
 // });
 
+app.use(express.static("public"));
+
 app.use(express.json());
 app.use(cookieParser());
 
@@ -32,9 +34,9 @@ app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });
 
-// app.use("/", (req, res) => {
-//   res.send("MERN REDUX is running");
-// });
+app.use("/", (req, res) => {
+  res.sendFile(__dirname + "/Api/views/index.html");
+});
 
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
