@@ -7,6 +7,7 @@ import authRoutes from "./routes/auth.route.js";
 // import cors from "cors";
 import cookieParser from "cookie-parser";
 import bookRoutes from "./routes/book.route.js";
+// import path from "path";
 
 mongoose
   .connect(process.env.MONGO)
@@ -15,7 +16,15 @@ mongoose
   })
   .catch((err) => console.log(err));
 
+// const __dirname = path.resolve();
 const app = express();
+
+// app.use(express.static(path.join(__dirname, "../../Client/dist")));
+
+// app.get("*", (req, res) => {
+//   res.sendFile(path.join(__dirname, "../../Client/dist/index.html"));
+// });
+
 app.use(express.json());
 app.use(cookieParser());
 
