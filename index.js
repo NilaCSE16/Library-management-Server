@@ -2,8 +2,10 @@ import express from "express";
 import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
-import userRoutes from "./routes/user.route.js";
+// import userRoutes from "./routes/user.route.js";
 import authRoutes from "./routes/auth.route.js";
+import userRoutes from "./routes/user.route.js";
+// import authRoutes from "./routes/auth.route.js";
 // import cors from "cors";
 import cookieParser from "cookie-parser";
 import bookRoutes from "./routes/book.route.js";
@@ -35,8 +37,8 @@ app.listen(5000, () => {
   console.log("Server is running on port 5000");
 });
 
-app.get("*", (req, res) => {
-  res.sendFile(__dirname + "/Api/views/index.html");
+app.get("/", (req, res) => {
+  res.sendFile(__dirname + "/views/index.html");
   // res.send("Application");
 });
 
