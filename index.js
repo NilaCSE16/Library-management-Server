@@ -6,7 +6,7 @@ dotenv.config();
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 // import authRoutes from "./routes/auth.route.js";
-import cors from "cors";
+// import cors from "cors";
 import cookieParser from "cookie-parser";
 import bookRoutes from "./routes/book.route.js";
 import path from "path";
@@ -56,6 +56,6 @@ app.use((err, req, res, next) => {
     statusCode: statusCode,
   });
 });
-app.use(cors());
+// app.use(cors());
 
 // module.exports = app;
