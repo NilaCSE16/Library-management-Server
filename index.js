@@ -23,12 +23,7 @@ const app = express();
 
 // app.use(express.static(path.join(__dirname, "../../Client/dist")));
 
-// app.get("*", (req, res) => {
-//   res.sendFile(path.join(__dirname, "../../Client/dist/index.html"));
-// });
-
 app.use(express.static("public"));
-app.use(express.urlencoded({ extended: true }));
 
 app.use(express.json());
 app.use(cookieParser());
@@ -57,5 +52,3 @@ app.use((err, req, res, next) => {
   });
 });
 // app.use(cors());
-
-// module.exports = app;
