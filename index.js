@@ -37,9 +37,9 @@ app.get("/", (req, res) => {
   // res.send("Application");
 });
 
-app.use("/api/user", userRoutes);
-app.use("/api/auth", authRoutes);
-app.use("/api/book", bookRoutes);
+app.use("/user", userRoutes);
+app.use("/auth", authRoutes);
+app.use("/book", bookRoutes);
 
 //middleware
 app.use((err, req, res, next) => {
