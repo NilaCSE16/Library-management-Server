@@ -55,3 +55,5 @@ app.use((err, req, res, next) => {
   });
 });
 // app.use(cors());
+
+module.exports = app;
