@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
   // res.send("Application");
 });
 
-app.use("/user", userRoutes);
+app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/book", bookRoutes);
 
