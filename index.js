@@ -6,20 +6,10 @@ dotenv.config();
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 // import authRoutes from "./routes/auth.route.js";
-// import cors from "cors";
+import cors from "cors";
 import cookieParser from "cookie-parser";
 import bookRoutes from "./routes/book.route.js";
 import path from "path";
-
-// app.use(
-//   cors({
-//     origin: [
-//       "http://localhost:5173",
-//       "https://library-management-client-five.vercel.app/",
-//     ],
-//     credentials: true,
-//   })
-// );
 
 mongoose
   .connect(process.env.MONGO)
@@ -37,6 +27,16 @@ const app = express();
 
 app.use(express.json());
 app.use(cookieParser());
+
+app.use(
+  cors({
+    origin: [
+      "http://localhost:5173",
+      "https://library-management-client-teal.vercel.app",
+    ],
+    credentials: true,
+  })
+);
 
 app.listen(5000, () => {
   console.log("Server is running on port 5000");
