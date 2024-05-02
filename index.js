@@ -33,7 +33,7 @@ const app = express();
 
 // app.use(express.static(path.join(__dirname, "../../Client/dist")));
 
-app.use(express.static("public"));
+// app.use(express.static("public"));
 
 app.use(express.json());
 app.use(cookieParser());
@@ -43,8 +43,8 @@ app.listen(5000, () => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(__dirname + "/views/index.html");
-  // res.send("Application");
+  // res.sendFile(__dirname + "/views/index.html");
+  res.send("Application");
 });
 
 app.use("/api/user", userRoutes);
