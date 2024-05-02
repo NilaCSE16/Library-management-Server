@@ -42,11 +42,13 @@ export const signin = async (req, res, next) => {
     // split password form validUser
     const { password: hashedPassword, ...rest } = validUser._doc;
     const expiryDate = new Date(Date.now() + 3600000); //1hr
-    console.log(token);
+    // console.log(token);
     res
       .cookie("access_token", token, {
         httpOnly: true,
         expires: expiryDate,
+        sameSite: "None",
+        secure: true,
       })
       .status(200)
       .header("Authorization", token)
