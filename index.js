@@ -6,21 +6,21 @@ dotenv.config();
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 // import authRoutes from "./routes/auth.route.js";
-import cors from "cors";
+// import cors from "cors";
 import cookieParser from "cookie-parser";
 import bookRoutes from "./routes/book.route.js";
 import path from "path";
 
-app.use(
-  cors({
-    origin: [
-      "http://localhost:5173",
-      "https://library-management-client-five.vercel.app",
-    ],
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
-    credentials: true,
-  })
-);
+// app.use(
+//   cors({
+//     origin: [
+//       "http://localhost:5173",
+//       "https://library-management-client-five.vercel.app",
+//     ],
+//     methods: ['GET', 'POST', 'PUT', 'DELETE'],
+//     credentials: true,
+//   })
+// );
 
 mongoose
   .connect(process.env.MONGO)
