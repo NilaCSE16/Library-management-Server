@@ -49,7 +49,7 @@ export const signin = async (req, res, next) => {
         expires: expiryDate,
         sameSite: "None",
         secure: true,
-        domain: "https://library-management-client-teal.vercel.app/",
+        domain: "https://library-management-client-teal.vercel.app",
       })
       .status(200)
       .header("Authorization", token)
