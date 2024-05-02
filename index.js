@@ -6,16 +6,16 @@ dotenv.config();
 import authRoutes from "./routes/auth.route.js";
 import userRoutes from "./routes/user.route.js";
 // import authRoutes from "./routes/auth.route.js";
-import cors from "cors";
+// import cors from "cors";
 import cookieParser from "cookie-parser";
 import bookRoutes from "./routes/book.route.js";
 import path from "path";
 
-app.use(
-  cors({
-    origin: "*"
-  })
-);
+// app.use(
+//   cors({
+//     origin: "*"
+//   })
+// );
 
 mongoose
   .connect(process.env.MONGO)
