@@ -32,7 +32,7 @@ export const updateUser = async (req, res, next) => {
       { new: true }
     );
     const { password, ...rest } = updatedUser._doc;
-    res.status(201).json(rest);
+    res.status(200).json(rest);
   } catch (error) {
     next(error);
   }
@@ -44,7 +44,7 @@ export const deleteUser = async (req, res, next) => {
   }
   try {
     await User.findByIdAndDelete(req.params.id);
-    res.status(201).json({ message: "User has been deleted" });
+    res.status(200).json({ message: "User has been deleted" });
   } catch (error) {
     next(error);
   }

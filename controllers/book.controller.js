@@ -24,7 +24,7 @@ export const addBook = async (req, res, next) => {
   //   console.log(newBook);
   try {
     await newBook.save();
-    res.status(201).json({ message: "Book added successfully" });
+    res.status(200).json({ message: "Book added successfully" });
   } catch (error) {
     next(error);
   }

@@ -15,7 +15,7 @@ export const signup = async (req, res, next) => {
   });
   try {
     await newUser.save();
-    res.status(201).json({ message: "User created Successfully" });
+    res.status(200).json({ message: "User created Successfully" });
   } catch (error) {
     // res.status(500).json(error.message);
     next(error);
@@ -42,9 +42,14 @@ export const signin = async (req, res, next) => {
     // split password form validUser
     const { password: hashedPassword, ...rest } = validUser._doc;
     const expiryDate = new Date(Date.now() + 3600000); //1hr
+    console.log(token);
     res
-      .cookie("access_token", token, { httpOnly: true, expires: expiryDate })
-      .status(201)
+      .cookie("access_token", token, {
+        httpOnly: true,
+        expires: expiryDate,
+      })
+      .status(200)
+      .header("Authorization", token)
       .json(rest);
   } catch (error) {
     next(error);
@@ -64,7 +69,7 @@ export const google = async (req, res, next) => {
           httpOnly: true,
           expires: expiryDate,
         })
-        .status(201)
+        .status(200)
         .json(rest);
     } else {
       const generatedPassword =
@@ -91,7 +96,7 @@ export const google = async (req, res, next) => {
           httpOnly: true,
           expires: expiryDate,
         })
-        .status(201)
+        .status(200)
         .json(rest);
     }
   } catch (error) {
@@ -102,6 +107,6 @@ export const google = async (req, res, next) => {
 export const signOut = (req, res) => {
   res
     .clearCookie("access_token")
-    .status(201)
+    .status(200)
     .json({ message: "Sign out successfully" });
 };

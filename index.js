@@ -3,12 +3,12 @@ import mongoose from "mongoose";
 import dotenv from "dotenv";
 dotenv.config();
 // import userRoutes from "./routes/user.route.js";
-import authRoutes from "./routes/auth.route.js";
-import userRoutes from "./routes/user.route.js";
+import authRoutes from "./api/auth.route.js";
+import userRoutes from "./api/user.route.js";
 // import authRoutes from "./routes/auth.route.js";
 import cors from "cors";
-import cookieParser from "cookie-parser";
-import bookRoutes from "./routes/book.route.js";
+// import cookieParser from "cookie-parser";
+import bookRoutes from "./api/book.route.js";
 import path from "path";
 
 mongoose
@@ -26,7 +26,7 @@ const app = express();
 // app.use(express.static("public"));
 
 app.use(express.json());
-app.use(cookieParser());
+// app.use(cookieParser());
 
 app.use(
   cors({
@@ -37,10 +37,6 @@ app.use(
     credentials: true,
   })
 );
-
-app.listen(5000, () => {
-  console.log("Server is running on port 5000");
-});
 
 app.get("/", (req, res) => {
   // res.sendFile(__dirname + "/views/index.html");
@@ -60,5 +56,9 @@ app.use((err, req, res, next) => {
     message,
     statusCode: statusCode,
   });
+});
+
+app.listen(5000, () => {
+  console.log("Server is running on port 5000");
 });
 // app.use(cors());
