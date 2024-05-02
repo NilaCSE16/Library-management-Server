@@ -30,11 +30,15 @@ app.use(cookieParser());
 
 app.use(
   cors({
+<<<<<<< HEAD
     origin: [
       "http://localhost:5173",
       "https://library-management-client-teal.vercel.app",
     ],
     credentials: true,
+=======
+    origin: "*"
+>>>>>>> 3fbcf3142eb5e1806f24f49b554f6c7b871dc738
   })
 );
 
