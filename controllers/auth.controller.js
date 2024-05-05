@@ -2,6 +2,11 @@ import User from "../models/user.model.js";
 import bcryptjs from "bcryptjs";
 import { errorHandler } from "../utils/error.js";
 import jwt from "jsonwebtoken";
+// import cookieParser from "cookie-parser";
+// import express from "express";
+// const app = express();
+
+// app.use(cookieParser());
 
 export const signup = async (req, res, next) => {
   // console.log(req.body);
@@ -37,23 +42,24 @@ export const signin = async (req, res, next) => {
       return next(errorHandler(401, "Wrong credentials"));
     }
     //   console.log(validPassword);
-    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET);
+    const token = jwt.sign({ id: validUser._id }, process.env.JWT_SECRET, {
+      expiresIn: "1h",
+    });
 
     // split password form validUser
     const { password: hashedPassword, ...rest } = validUser._doc;
     const expiryDate = new Date(Date.now() + 3600000); //1hr
     // console.log(token);
     res
-      .cookie("access_token", token, {
-        httpOnly: true,
-        expires: expiryDate,
-        sameSite: "None",
-        secure: true,
-        domain: "https://library-management-client-teal.vercel.app",
-      })
       .status(200)
       .header("Authorization", token)
-      .json(rest);
+      .cookie("access_token", token, {
+        httpOnly: true,
+        sameSite: "none",
+        secure: true,
+        partitioned: true,
+      })
+      .send(rest);
   } catch (error) {
     next(error);
   }
