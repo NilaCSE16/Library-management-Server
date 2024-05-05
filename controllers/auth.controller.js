@@ -52,7 +52,6 @@ export const signin = async (req, res, next) => {
     // console.log(token);
     res
       .status(200)
-      .header("Authorization", token)
       .cookie("access_token", token, {
         httpOnly: true,
         sameSite: "none",
@@ -60,6 +59,7 @@ export const signin = async (req, res, next) => {
         partitioned: true,
         expires: expiryDate,
       })
+      .header("Authorization", token)
       .json(rest);
   } catch (error) {
     next(error);
@@ -82,6 +82,7 @@ export const google = async (req, res, next) => {
           secure: true,
           partitioned: true,
         })
+        .header("Authorization", token)
         .status(200)
         .json(rest);
     } else {
@@ -112,6 +113,7 @@ export const google = async (req, res, next) => {
           secure: true,
           partitioned: true,
         })
+        .header("Authorization", token)
         .status(200)
         .json(rest);
     }
