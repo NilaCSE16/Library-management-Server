@@ -37,3 +37,13 @@ export const viewBooksList = async (req, res) => {
     res.send(books);
   });
 };
+
+export const bookCount = (req, res, next) => {
+  BooksList.countDocuments({})
+    .then((count) => {
+      res.send({ count });
+    })
+    .catch((error) => {
+      next(error);
+    });
+};

@@ -123,8 +123,10 @@ export const google = async (req, res, next) => {
 };
 
 export const signOut = (req, res) => {
+  const cookie = req?.cookies;
+  console.log("Cookie: ", cookie);
   res
     .clearCookie("access_token")
     .status(200)
-    .json({ message: "Sign out successfully" });
+    .send({ message: "Sign out successfully" });
 };
