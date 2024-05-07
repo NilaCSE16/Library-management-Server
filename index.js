@@ -5,7 +5,7 @@ dotenv.config();
 // import userRoutes from "./routes/user.route.js";
 import authRoutes from "./api/auth.route.js";
 import userRoutes from "./api/user.route.js";
-// import authRoutes from "./routes/auth.route.js";
+import borrowRoutes from "./api/borrow.route.js";
 import cors from "cors";
 // import cookieParser from "cookie-parser";
 import bookRoutes from "./api/book.route.js";
@@ -46,6 +46,7 @@ app.get("/", (req, res) => {
 app.use("/api/user", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/api/book", bookRoutes);
+app.use("/api/borrow", borrowRoutes);
 
 //middleware
 app.use((err, req, res, next) => {
