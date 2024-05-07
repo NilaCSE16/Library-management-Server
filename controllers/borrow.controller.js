@@ -31,7 +31,7 @@ export const borrowBook = async (req, res, next) => {
         },
       }
     );
-    console.log(document.bookAvailable);
+    // console.log(document.bookAvailable);
     res.status(200).json({ message: "Borrow Information Noted" });
   } catch (error) {
     next(error);
@@ -50,4 +50,31 @@ export const getMyBorrowList = async (req, res, next) => {
     .catch((error) => {
       next(error);
     });
+};
+
+export const returnBorrowBook = async (req, res, next) => {
+  const bookId = req.query.bookId;
+  const userName = req.query.userName;
+  //   borrowList.find({ bookId, userName }).then((remain) => {
+  //     // console.log(remain);
+  //   });
+  const criteria = { bookId: bookId, userName: userName };
+  try {
+    const result = await borrowList.deleteOne(criteria);
+    const document = await BooksList.findOne({ bookId: bookId });
+    console.log(document.bookAvailable);
+    await BooksList.updateOne(
+      {
+        bookId: bookId,
+      },
+      {
+        $set: {
+          bookAvailable: document.bookAvailable + 1,
+        },
+      }
+    );
+    res.send(result);
+  } catch (error) {
+    next(error);
+  }
 };

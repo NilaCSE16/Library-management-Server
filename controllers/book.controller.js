@@ -47,3 +47,15 @@ export const bookCount = (req, res, next) => {
       next(error);
     });
 };
+
+export const viewAuthor = (req, res, next) => {
+  const bookAuthor = req.params.bookAuthor;
+  // console.log(author);
+  BooksList.find({ bookAuthor: bookAuthor })
+    .then((books) => {
+      res.send(books);
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
