@@ -38,3 +38,16 @@ export const borrowBook = async (req, res, next) => {
   }
   // console.log(borrowInfo);
 };
+
+export const getMyBorrowList = async (req, res, next) => {
+  const username = req.params.username;
+  //   console.log(username);
+  borrowList
+    .find({ userName: username })
+    .then((books) => {
+      res.send(books);
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
