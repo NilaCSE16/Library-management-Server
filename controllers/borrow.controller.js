@@ -51,6 +51,16 @@ export const getMyBorrowList = async (req, res, next) => {
       next(error);
     });
 };
+export const issuedBooks = async (req, res, next) => {
+  borrowList
+    .find({})
+    .then((books) => {
+      res.send(books);
+    })
+    .catch((error) => {
+      next(error);
+    });
+};
 
 export const returnBorrowBook = async (req, res, next) => {
   const bookId = req.query.bookId;

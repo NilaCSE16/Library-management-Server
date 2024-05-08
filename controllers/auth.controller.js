@@ -10,13 +10,14 @@ import jwt from "jsonwebtoken";
 
 export const signup = async (req, res, next) => {
   // console.log(req.body);
-  const { username, email, department, password } = req.body;
+  const { username, email, department, password, userType } = req.body;
   const hashedPassword = bcryptjs.hashSync(password, 10);
   const newUser = new User({
     username,
     email,
     department: department,
     password: hashedPassword,
+    role: userType,
   });
   try {
     await newUser.save();
@@ -98,6 +99,7 @@ export const google = async (req, res, next) => {
         email: req.body.email,
         department: null,
         password: hashedPassword,
+        role: "User",
         profilePicture: req.body.photo,
       });
       // console.log(newUser);
